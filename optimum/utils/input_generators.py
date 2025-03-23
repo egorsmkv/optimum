@@ -66,6 +66,7 @@ DEFAULT_DUMMY_SHAPES = {
     "feature_size": 80,
     "nb_max_frames": 3000,
     "audio_sequence_length": 16000,
+    "target_length": 200,
 }
 
 
