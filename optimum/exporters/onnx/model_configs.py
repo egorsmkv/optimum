@@ -1667,6 +1667,12 @@ class HubertOnnxConfig(AudioOnnxConfig):
 class Wav2Vec2OnnxConfig(HubertOnnxConfig):
     DEFAULT_ONNX_OPSET = 14  # now uses F.scaled_dot_product_attention by default for torch>=2.1.1.
 
+class Wav2Vec2BertOnnxConfig(Wav2Vec2OnnxConfig):
+    DEFAULT_ONNX_OPSET = 14
+
+    @property
+    def inputs(self) -> Dict[str, Dict[int, str]]:
+        return {"input_features": {0: "batch_size", 1: "sequence_length"}}
 
 class Wav2Vec2ConformerOnnxConfig(HubertOnnxConfig):
     DEFAULT_ONNX_OPSET = 11
